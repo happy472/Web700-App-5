@@ -1,0 +1,53 @@
+<div class="row">
+    <main class="col-md-12">
+      <br>
+      <h2><%= student.firstName %> <%= student.lastName %> - Student: <%= student.studentNum %></h2>
+      <hr />
+      <form method="post" action="/student/update">
+        <input type="hidden" name="studentNum" value="<%= student.studentNum %>" />
+  
+        <fieldset>
+          <legend>Personal Information</legend>
+          <div class="row">
+            <div class="col-md-6">
+              <label>First Name:</label>
+              <input class="form-control" name="firstName" type="text" value="<%= student.firstName %>" />
+            </div>
+            <div class="col-md-6">
+              <label>Last Name:</label>
+              <input class="form-control" name="lastName" type="text" value="<%= student.lastName %>" />
+            </div>
+          </div>
+          <label>Email:</label>
+          <input class="form-control" name="email" type="email" value="<%= student.email %>" />
+          <label>Address (Street):</label>
+          <input class="form-control" name="addressStreet" type="text" value="<%= student.addressStreet %>" />
+          <label>Address (City):</label>
+          <input class="form-control" name="addressCity" type="text" value="<%= student.addressCity %>" />
+          <label>Address (Province):</label>
+          <input class="form-control" name="addressProvince" type="text" value="<%= student.addressProvince %>" />
+        </fieldset>
+  
+        <fieldset>
+          <legend>Academic Information</legend>
+          <label>Teaching Assistant:</label>
+          <input type="checkbox" name="TA" value="true" <%= student.TA ? "checked" : "" %> />
+          <br />
+          <label>Status:</label><br />
+          <input type="radio" name="status" value="Full Time" <%= student.status === "Full Time" ? "checked" : "" %> /> Full Time
+          <input type="radio" name="status" value="Part Time" <%= student.status === "Part Time" ? "checked" : "" %> /> Part Time
+          <br />
+          <label for="course">Course:</label>
+          <select name="course" class="form-control">
+            <% for (let i = 1; i <= 11; i++) { %>
+              <option value="<%= i %>" <%= student.course == i ? "selected" : "" %>><%= i %></option>
+            <% } %>
+          </select>
+        </fieldset>
+  
+        <hr />
+        <input type="submit" class="btn btn-primary float-right" value="Update Student" />
+      </form>
+    </main>
+  </div>
+  

@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12">
+      <br />
+      <h2>Students</h2>
+      <hr />
+      <% if (typeof students !== "undefined") { %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Student Num</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Course ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% students.forEach(student => { %>
+                <tr>
+                  <td><%= student.studentNum %></td>
+                  <td><a href="/student/<%= student.studentNum %>"><%= student.firstName %> <%= student.lastName %></a></td>
+                  <td><a href="mailto:<%= student.email %>"><%= student.email %></a></td>
+                  <td><%= student.addressStreet %>, <%= student.addressCity %>, <%= student.addressProvince %></td>
+                  <td><%= student.status %></td>
+                  <td><a href="/students?course=<%= student.course %>"><%= student.course %></a></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <div class="text-center">
+          <strong><%= message %></strong>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  
