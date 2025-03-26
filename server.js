@@ -53,8 +53,11 @@ app.get("/students/add", (req, res) => {
 app.post("/students/add", (req, res) => {
   collegeData.addStudent(req.body)
     .then(() => res.redirect("/students"))
-    .catch((err) => res.status(500).render("error", { message: "Error adding student: " + err }));
+    .catch((err) => {
+      res.status(500).render("error", { message: "Unable to add student. " + err });
+    });
 });
+
 
 app.get("/students", (req, res) => {
   if (req.query.course) {
