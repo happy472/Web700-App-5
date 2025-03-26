@@ -17,7 +17,7 @@ const collegeData = require("./modules/collegeData");
 const HTTP_PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
 
